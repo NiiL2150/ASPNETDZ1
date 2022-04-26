@@ -1,0 +1,19 @@
+﻿@using System.Security.Policy
+@model IToDoList
+@{
+    ViewData["Title"] = "ToDoList";
+    int itemId = 0;
+}
+
+<div class=text-center>
+    <form asp-action="ToDoAdd" asp-controller="Home" method="post">
+        <input type="text" name="text" />
+        <button type="submit" name="Submit">Add</button>
+    </form>
+    @foreach (var item in Model.List)
+    {
+        <b>@item</b>
+        <a href="@Url.Action("ToDoDelete", "Home", new {id = itemId++})">X</a>
+        <br />
+    }
+</div>
